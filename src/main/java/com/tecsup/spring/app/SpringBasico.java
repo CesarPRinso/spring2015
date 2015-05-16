@@ -11,7 +11,6 @@ public class SpringBasico {
     public static void main(String[] args) {
         ApplicationContext cntx = new ClassPathXmlApplicationContext("app.xml");
 
-        SpringBasico.ejemplo9(cntx);
     }
 
     public static void ejemplo9(ApplicationContext cntx) {
