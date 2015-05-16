@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    
+    <bean id="musico" class="com.tecsup.spring.model.Musico"/>
+    
+    <!-- Ejemplo 1-->
+    <bean id="bob" class="com.tecsup.spring.model.Musico">
+        <constructor-arg value="Bob" />
+        <constructor-arg value="5"/>
+    </bean>
+    
+    <!-- Ejemplo 2 -->
+    <bean id="helena" class="com.tecsup.spring.model.Guitarra" primary="true">
+        <constructor-arg value="Helena XYZ" />
+        <constructor-arg value="Gibson 29393"/>
+    </bean>
+   
+    <bean id="cerati" class="com.tecsup.spring.model.Musico">
+        <constructor-arg ref="helena" />
+    </bean>
+    
+    <!-- Ejemplo 3 -->
+    <bean id="calamaro" class="com.tecsup.spring.model.Musico">
+        <property name="nombre" value="A. Calamaro"/>
+        <property name="canciones" value="20"/>
+        <property name="instrumentoFavorito" ref="helena"/>
+    </bean>
+    
+    <!-- Ejemplo 4 -->
+    <bean id="vertiz" class="com.tecsup.spring.model.Musico">
+        <property name="nombre" value="D. Vertiz"/>
+        <property name="canciones" value="10"/>
+        
+        <property name="instrumentoFavorito">
+            
+            <bean id="rafaela" class="com.tecsup.spring.model.Guitarra">
+                <constructor-arg value="Rafaela" />
+                <constructor-arg value="Gibson 1020"/>
+            </bean>
+            
+        </property>
+    </bean>
+    
+    <!-- Ejemplo 5 -->
+    <bean id="piano" class="com.tecsup.spring.model.Piano"/>
+    <bean id="violin" class="com.tecsup.spring.model.Instrumento"/>
+    
+    <bean id="patricio" class="com.tecsup.spring.model.Musico">
+        <property name="nombre" value="Patricio"/>
+        
+        <property name="instrumentos">
+            <list>
+                <ref bean="piano"/>
+                <ref bean="violin"/>
+                <ref bean="helena"/>
+            </list>
+        </property>
+    </bean>
+    
+    
+    
+    <!-- Ejemplo 6 -->
+    <bean id="instrumentoFavorito" class="com.tecsup.spring.model.Instrumento">
+        <property name="nombre" value="Guitarra de Elvis"/>
+    </bean>    
+    
+    <bean id="elvis" class="com.tecsup.spring.model.Musico" autowire="byName"/>
+    
+    <!-- Ejemplo 7 -->
+    <bean id="kurt" class="com.tecsup.spring.model.Musico" autowire="byType"/>
+    
+    <!-- Ejemplo 8 -->
+    <bean id="bruce" class="com.tecsup.spring.model.Musico" autowire="constructor"/>
+       
+    <!-- Ejemplo 9 -->
+    <bean id="paul" class="com.tecsup.spring.model.Musico" autowire="no"/>
+    
+    
+    
+</beans>
