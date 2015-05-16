@@ -7,7 +7,7 @@ public class Instrumento {
     private String marca;
 
     public void sonido() {
-        System.out.println("(sonido instrumento)");
+        System.out.println("brbrbrbrb (sonido instrumento)");
     }
 
     public Instrumento(String nombre, String marca) {
